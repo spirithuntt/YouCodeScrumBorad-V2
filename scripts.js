@@ -1,4 +1,5 @@
 /*********************************************/
+let taskid = document.getElementById("task-id")
 let title = document.getElementById("task-title");
 let bug = document.getElementById("task-type-bug");
 let feature = document.getElementById("task-type-feature");
@@ -6,29 +7,23 @@ let priority = document.getElementById("task-priority");
 let status = document.getElementById("task-status");
 let date = document.getElementById("task-date");
 let description = document.getElementById("task-description");
+let savebtn = document.getElementById("task-save-btn");
+let updatebn = document.getElementById("task-update-btn");
+let deletebnt = document.getElementById("task-delete-btn");
 
-document.getElementById("addBtn").addEventListener("click", btnswitch);
+document.getElementById("addBtn").addEventListener("click", btnswitch); //save button
+
 function btnswitch() {
   //SWITCH BUTTONS
   document.getElementById("task-save-btn").style.display = "block";
   document.getElementById("task-update-btn").style.display = "none";
   document.getElementById("task-delete-btn").style.display = "none";
-  document.getElementById("task-save-btn").setAttribute("type", "submit");
-  document.getElementById("task-save-btn").setAttribute("name", "save");
 }
 //display data in modal
 function editTask(id) {
-  document.getElementById("task-id").setAttribute("value", id);
-  document.getElementById("task-save-btn").removeAttribute("type")
-  document.getElementById("task-save-btn").removeAttribute("name")
   document.getElementById("task-delete-btn").style.display = "block";
   document.getElementById("task-update-btn").style.display = "block";
   document.getElementById("task-save-btn").style.display = "none";
-  document.getElementById("task-update-btn").setAttribute("type", "submit");
-  document.getElementById("task-update-btn").setAttribute("name", "update");
-  document
-    .getElementById("task-delete-btn")
-    .addEventListener("click", setAttributedelete);
   //input
   let test = document.getElementById(id);
   title.value = test.children[1].children[0].innerHTML;
@@ -38,6 +33,7 @@ function editTask(id) {
   } else {
     bug.checked = true;
   }
+  taskid.value = id;
   description.value = test.children[1].children[1].children[1].innerHTML;
   priority.value = test.children[1].children[2].children[1].innerHTML;
   date.value = test.children[1].children[1].children[0].innerHTML.slice(-10);
@@ -51,10 +47,4 @@ function editTask(id) {
     status.value = 3;
   }
 }
-function setAttributedelete() {
-  document.getElementById("task-delete-btn").setAttribute("type", "submit");
-  document.getElementById("task-delete-btn").setAttribute("name", "save");
-}
-function setAttributeupdate() {
 
-}

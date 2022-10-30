@@ -9,16 +9,17 @@ session_start();
 //ROUTING
 if (isset($_POST['save']))
     saveTask();
+    if (isset($_POST['delete']))
+    deleteTask();
 if (isset($_POST['update']))
     updateTask();
-if (isset($_POST['delete']))
-    deleteTask();
 
 
 function getTasks($status)
 {
     //CODE HERE
     $connect=connection();
+    $index = 1;
 
     //SQL SELECT
         #select all the data
@@ -45,7 +46,6 @@ function getTasks($status)
 
         if(mysqli_num_rows($result) > 0)
         {
-            $index = 0;
             while($fetch = mysqli_fetch_assoc($result))
             {
                 
@@ -59,7 +59,7 @@ function getTasks($status)
                         <div class="flex-fill w-75">
                             <div class="fs-14px lh-12 mb-2px fw-bold text-dark text-truncate">'.$fetch['title'].'</div>
                             <div class="mb-1 fs-12px">
-                                <div class="text-gray-600 flex-1">#'.$fetch['id'].' created in '.$fetch['task_datetime'].'</div>
+                                <div class="text-gray-600 flex-1">#'.$index.' created in '.$fetch['task_datetime'].'</div>
                                 <div class="text-gray-900 flex-1 text-truncate" title="'.$fetch['description'].'">'.$fetch['description'].'</div>
                             </div>
                             <div class="mb-1">
@@ -109,7 +109,6 @@ function updateTask()
     //CODE HERE
     $connect=connection();
     if(isset($_POST['update'])){
-        var_dump($_POST);
         $id = $_POST["task-id"];
         $title = $_POST["title"];
         $type = $_POST["task-type"];
@@ -122,21 +121,26 @@ function updateTask()
     }
 
 
-
-
-
-
     //SQL UPDATE
     $_SESSION['message'] = "Task has been updated successfully !";
-    // header('location: index.php');
+    header('location: index.php');
 }
 
 function deleteTask()
 {
+    echo "test";
     //CODE HERE
     //SQL DELETE
+    $connect=connection();
     $_SESSION['message'] = "Task has been deleted successfully !";
-    header('location: index.php');
+    $id = $_POST["task-id"];
+    $sql = "DELETE FROM `tasks` WHERE id = '$id'";
+    $result = mysqli_query($connect, $sql);
+    if($result){
+        header('location: index.php');
+    }else{
+        echo "something went wrong";
+    }
 }
 
 ?>
