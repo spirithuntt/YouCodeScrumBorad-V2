@@ -1,5 +1,4 @@
 /*********************************************/
-let id = document.getElementById("task-id").value;
 let title = document.getElementById("task-title");
 let bug = document.getElementById("task-type-bug");
 let feature = document.getElementById("task-type-feature");
@@ -19,12 +18,14 @@ function btnswitch() {
 }
 //display data in modal
 function editTask(id) {
+  document.getElementById("task-id").setAttribute("value", id);
+  document.getElementById("task-save-btn").removeAttribute("type")
+  document.getElementById("task-save-btn").removeAttribute("name")
   document.getElementById("task-delete-btn").style.display = "block";
   document.getElementById("task-update-btn").style.display = "block";
   document.getElementById("task-save-btn").style.display = "none";
-  document
-    .getElementById("task-update-btn")
-    .addEventListener("click", setAttributeupdate);
+  document.getElementById("task-update-btn").setAttribute("type", "submit");
+  document.getElementById("task-update-btn").setAttribute("name", "update");
   document
     .getElementById("task-delete-btn")
     .addEventListener("click", setAttributedelete);
@@ -37,11 +38,11 @@ function editTask(id) {
   } else {
     bug.checked = true;
   }
-
   description.value = test.children[1].children[1].children[1].innerHTML;
   priority.value = test.children[1].children[2].children[1].innerHTML;
   date.value = test.children[1].children[1].children[0].innerHTML.slice(-10);
-  console.log(test.children[1].children[2].children[2].innerHTML);
+  console.log(test.children[0]);
+  console.log(id);
   if (test.parentElement.id == "to-do-tasks") {
     status.value = 1;
   } else if (test.parentElement.id == "in-progress-tasks") {
@@ -55,6 +56,5 @@ function setAttributedelete() {
   document.getElementById("task-delete-btn").setAttribute("name", "save");
 }
 function setAttributeupdate() {
-  document.getElementById("task-update-btn").setAttribute("type", "submit");
-  document.getElementById("task-update-btn").setAttribute("name", "save");
+
 }

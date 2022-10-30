@@ -43,7 +43,7 @@ function getTasks($status)
 
         #to excute the query
 
-        if(mysqli_num_rows($result) > 0)        
+        if(mysqli_num_rows($result) > 0)
         {
             $index = 0;
             while($fetch = mysqli_fetch_assoc($result))
@@ -105,10 +105,30 @@ function saveTask()
 
 function updateTask()
 {
+    var_dump($_POST);
     //CODE HERE
+    $connect=connection();
+    if(isset($_POST['update'])){
+        var_dump($_POST);
+        $id = $_POST["task-id"];
+        $title = $_POST["title"];
+        $type = $_POST["task-type"];
+        $priority = $_POST["priority"];
+        $status = $_POST["status"];
+        $taskDate = $_POST["date"];
+        $description = $_POST["description"];
+        $sql = "UPDATE tasks SET title = '$title', type_id = '$type',priority_id = '$priority', status_id = '$status',task_datetime = '$taskDate', description = '$description' WHERE id = '$id'";
+        $result = mysqli_query($connect, $sql);
+    }
+
+
+
+
+
+
     //SQL UPDATE
     $_SESSION['message'] = "Task has been updated successfully !";
-    header('location: index.php');
+    // header('location: index.php');
 }
 
 function deleteTask()

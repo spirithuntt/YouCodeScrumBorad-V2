@@ -331,14 +331,14 @@
 	<div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="scripts.php" method="POST" id="form-task">
+				<form action="" method="POST" id="form-task">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
-						<a href="#" class="btn-close" add></a>
+						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
 					</div>
 					<div class="modal-body">
 							<!-- This Input Allows Storing Task Index  -->
-							<input type="hidden" id="task-id" name="">
+							<input type="hidden" id="task-id" name="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
 								<input type="text" class="form-control" id="task-title" name= "title"/>
@@ -387,7 +387,7 @@
 						
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn btn-white" add>Cancel</a>
+						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
 						<button  class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
 						<button  class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
 						<button  class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
