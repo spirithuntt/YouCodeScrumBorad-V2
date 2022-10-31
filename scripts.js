@@ -27,18 +27,15 @@ function editTask(id) {
   //input
   let test = document.getElementById(id);
   title.value = test.children[1].children[0].innerHTML;
-
-  if (test.children[1].children[2].children[2].innerHTML == "1") {
+  if (test.children[1].children[2].children[2].innerHTML == "feature") {
     feature.checked = true;
   } else {
     bug.checked = true;
   }
   taskid.value = id;
   description.value = test.children[1].children[1].children[1].innerHTML;
-  priority.value = test.children[1].children[2].children[1].innerHTML;
+  priority.value = test.children[1].children[2].children[1].getAttribute('dataPriority');
   date.value = test.children[1].children[1].children[0].innerHTML.slice(-10);
-  console.log(test.children[0]);
-  console.log(id);
   if (test.parentElement.id == "to-do-tasks") {
     status.value = 1;
   } else if (test.parentElement.id == "in-progress-tasks") {

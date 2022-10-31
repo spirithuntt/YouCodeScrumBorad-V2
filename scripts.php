@@ -23,7 +23,13 @@ function getTasks($status)
 
     //SQL SELECT
         #select all the data
-        $sql = "SELECT * FROM tasks WHERE status_id = '$status'";
+        $sql = "SELECT tasks.id, tasks.title , tasks.priority_id, types.name as type, priorities.name as priority, tasks.task_datetime, tasks.description FROM tasks
+        INNER JOIN types
+        ON types.id = tasks.type_id
+        INNER JOIN priorities
+        ON priorities.id = tasks.priority_id
+        INNER JOIN statuses
+        ON statuses.id = tasks.status_id where status_id = $status;";
                 $result = mysqli_query($connect, $sql);
         #for emotes & counts
         if($status == 1)
@@ -64,8 +70,8 @@ function getTasks($status)
                             </div>
                             <div class="mb-1">
                                 <p hidden>'.$fetch['id'].'</p>
-                                <span class="badge bg-primary">'.$fetch['priority_id'].'</span>
-                                <span class="badge bg-gray-300 text-gray-900">'.$fetch['type_id'].'</span>
+                                <span class="badge bg-primary" dataPriority="'.$fetch['priority_id'].'">'.$fetch['priority'].'</span>
+                                <span class="badge bg-gray-300 text-gray-900">'.$fetch['type'].'</span>
                             </div>
                         </div>
                     </button> ';
@@ -74,14 +80,17 @@ function getTasks($status)
             }
         }
      else{
-        echo "No records matching your query were found.";
+        echo '<div class="card border-light fs-14px lh-12 mb-2px fw-bold text-dark text-truncate">
+        <div class="card-body">
+          <h5 class="card">No records matching your query were found.</h5>
+        </div>
+      </div>';
         }
 }
-
+// No records matching your query were found.
 function saveTask()
 {
     //CODE HERE
-    $id = $_POST["id"];
     $title = $_POST["title"];
     $type = $_POST["task-type"];
     $priority = $_POST["priority"];

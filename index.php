@@ -341,24 +341,24 @@
 							<input type="hidden" id="task-id" name="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input type="text" class="form-control" id="task-title" name= "title"/>
+								<input type="text" class="form-control" id="task-title" name= "title" required/>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-feature"/>
+										<input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-feature" required/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-bug"/>
+										<input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-bug" required/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
 								
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Priority</label>
+								<label class="form-label">Priority</label required>
 								<select class="form-select" id="task-priority" name="priority">
 									<option selected disabled >Please select</option>
 									<option value="1">Low</option>
@@ -369,7 +369,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
-								<select class="form-select" id="task-status" name="status">
+								<select class="form-select" id="task-status" name="status" required>
 									<option selected disabled value="">Please select</option>
 									<option value="1">To Do</option>
 									<option value="2">In Progress</option>
@@ -378,7 +378,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="date" class="form-control" id="task-date" name="date"/>
+								<input type="date" class="form-control" id="task-date" name="date" required/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
