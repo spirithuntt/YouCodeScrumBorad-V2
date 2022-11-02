@@ -1,11 +1,7 @@
 <?php
 //INCLUDE DATABASE FILE
-use LDAP\Result;
-
 include('database.php');
 //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
-session_start();
-
 //ROUTING
 if (isset($_POST['save']))
     saveTask();

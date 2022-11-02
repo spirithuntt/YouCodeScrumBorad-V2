@@ -44,4 +44,3 @@ function editTask(id) {
     status.value = 3;
   }
 }
-

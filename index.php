@@ -1,5 +1,9 @@
 <?php
     include('scripts.php');
+		if(!isset($_SESSION['login'])){
+			header("Location: ./login-system/login.php");
+	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +120,7 @@
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
 						<img src="assets/img/user/user-0.jpg" alt="" /> 
 						<span>
-							<span class="d-none d-md-inline">nouhaila el housni</span>
+							<span class="d-none d-md-inline"><?php echo $_SESSION['username']; ?></span>
 							<b class="caret"></b>
 						</span>
 					</a>
@@ -129,7 +133,7 @@
 						<a href="javascript:;" class="dropdown-item">Calendar</a>
 						<a href="javascript:;" class="dropdown-item">Setting</a>
 						<div class="dropdown-divider"></div>
-						<a href="javascript:;" class="dropdown-item">Log Out</a>
+						<a href="login-system/logout.php" class="dropdown-item">Log Out</a>
 					</div>
 				</div>
 			</div>
@@ -152,7 +156,7 @@
 							<div class="menu-profile-info">
 								<div class="d-flex align-items-center">
 									<div class="flex-grow-1">
-										nouhaila el housni
+										<?php echo $_SESSION['username'];?>
 									</div>
 									<div class="menu-caret ms-auto"></div>
 								</div>

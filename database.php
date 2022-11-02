@@ -1,4 +1,5 @@
 <?php
+session_start();
   function connection()
   {
     //CONNECT TO MYSQL DATABASE USING MYSQLI
