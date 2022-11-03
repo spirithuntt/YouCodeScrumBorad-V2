@@ -1,7 +1,8 @@
 <?php
 			if(isset($_SESSION['login'])){
 				header("Location: ../index.php");
-		}
+      }
+		
 include('function.php');
 $connect=connection();
 ?>
@@ -79,5 +80,23 @@ $connect=connection();
     
   </div>
 </section>
+<style>
+    .divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+  </style>
+
 
 </html>

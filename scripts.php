@@ -10,6 +10,12 @@ if (isset($_POST['save']))
 if (isset($_POST['update']))
     updateTask();
 
+    function counterTask($status){
+        $connect = connection();
+        $sql="SELECT * FROM tasks WHERE status_id = $status";
+        $result=mysqli_query($connect,$sql);
+        echo mysqli_num_rows($result);
+    }
 
 function getTasks($status)
 {
@@ -26,22 +32,20 @@ function getTasks($status)
         ON priorities.id = tasks.priority_id
         INNER JOIN statuses
         ON statuses.id = tasks.status_id where status_id = $status;";
-                $result = mysqli_query($connect, $sql);
+
+        $result = mysqli_query($connect, $sql);
         #for emotes & counts
         if($status == 1)
         {
             $icon = 'far fa-question-circle';
-            $_SESSION['countToDo'] = mysqli_num_rows($result);
         }
             if($status == 2)
         {
             $icon = 'fas fa-circle-notch fa-spin';
-            $_SESSION['countInProgress'] = mysqli_num_rows($result);
         }
             if($status == 3)
         {
             $icon = 'far fa-circle-check';
-            $_SESSION['countDone'] = mysqli_num_rows($result);
         }
 
         #to excute the query

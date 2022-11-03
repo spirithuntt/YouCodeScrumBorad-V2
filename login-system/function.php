@@ -1,7 +1,6 @@
 <?php
 //INCLUDE DATABASE FILE
 include('../database.php');
-//SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
 
 //ROUTING
 if (isset($_POST['signin']))
@@ -57,13 +56,12 @@ function login()
 				{
 
 					$user_data = mysqli_fetch_assoc($result);
-					$password_v = password_verify($password, $user_data['password']);
+					$password_v = password_verify($password, $user_data['password']);//
 					if($password_v == $password)
 					{
             $_SESSION['id'] = $user_data['user_id'];
             $_SESSION['username'] = $user_data['user_name'];
             $_SESSION['login'] = true;
-            $_SESSION['timestamp'] = time();//so it will logout in a specific time
 						header("Location: ../index.php");
 					}
 				}
