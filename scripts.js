@@ -36,6 +36,8 @@ function editTask(id) {
   description.value = test.children[1].children[1].children[1].innerHTML;
   priority.value = test.children[1].children[2].children[1].getAttribute('dataPriority');
   date.value = test.children[1].children[1].children[0].innerHTML.slice(-10);
+  
+  // test is the id of the task , id is the id of the status (to-do-tasks)
   if (test.parentElement.id == "to-do-tasks") {
     status.value = 1;
   } else if (test.parentElement.id == "in-progress-tasks") {

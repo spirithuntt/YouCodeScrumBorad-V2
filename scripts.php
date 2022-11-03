@@ -82,7 +82,7 @@ function getTasks($status)
      else{
         echo '<div class="card border-light fs-14px lh-12 mb-2px fw-bold text-dark text-truncate">
         <div class="card-body">
-          <h5 class="card">No records matching your query were found.</h5>
+          <h5 class="card">No records were found.</h5>
         </div>
       </div>';
         }
