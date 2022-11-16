@@ -30,8 +30,7 @@ function getTasks($status)
         ON types.id = tasks.type_id
         INNER JOIN priorities
         ON priorities.id = tasks.priority_id
-        INNER JOIN statuses
-        ON statuses.id = tasks.status_id where status_id = $status;";
+        where status_id = $status;";
 
         $result = mysqli_query($connect, $sql);
         #for emotes & counts
@@ -114,7 +113,6 @@ function saveTask()
 
 function updateTask()
 {
-    var_dump($_POST);
     //CODE HERE
     $connect=connection();
     if(isset($_POST['update'])){
