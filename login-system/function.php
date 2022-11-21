@@ -16,7 +16,7 @@ function signup()
 		//something was posted
 		$user_name = $_POST['user_name'];
 		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);//Use the CRYPT_BLOWFISH algorithm to create the hash. This will produce a standard crypt() compatible hash using the "$2y$" identifier. The result will always be a 60 character string, or false on failure.
-
+ 
 		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
 		{
 
@@ -56,7 +56,7 @@ function login()
 				{
 
 					$user_data = mysqli_fetch_assoc($result);
-					$password_v = password_verify($password, $user_data['password']);//
+					$password_v = password_verify($password, $user_data['password']);
 					if($password_v == $password)
 					{
             $_SESSION['id'] = $user_data['user_id'];
